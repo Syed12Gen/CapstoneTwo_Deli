@@ -5,5 +5,4 @@ public enum BreadType {
     RYE,
     WHEAT,
     WRAP,
-
 }
