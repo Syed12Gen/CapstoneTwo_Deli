@@ -10,4 +10,9 @@ public class Chips extends Product{
     public void setSize(Sizes size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return size + " chips: " + getPrice();
+    }
 }

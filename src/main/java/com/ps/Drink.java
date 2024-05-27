@@ -19,4 +19,9 @@ public class Drink extends Product {
     public void setFlavor(DrinkFlavor flavor) {
         this.flavor = flavor;
     }
+
+    @Override
+    public String toString() {
+        return size + " " + flavor + " drink: " + getPrice();
+    }
 }
