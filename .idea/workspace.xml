@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f78f1aa-49f9-4834-8cf7-30877587c7ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ps/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ps/HomeScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ps/OrderScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Chips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/DrinkFlavor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/DrinkFlavor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Sandwich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Sandwich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/SandwichSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/SandwichSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/SandwichTopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/SandwichTopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Sizes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +51,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager"
