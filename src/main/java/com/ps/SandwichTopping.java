@@ -1,11 +1,21 @@
 package com.ps;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class SandwichTopping {
     private String name;
     private String type;
     private Map<SandwichSize, Double> prices;
+
+    // Constructor
+    public SandwichTopping(String name, String type, Map<SandwichSize, Double> prices) {
+        this.name = name;
+        this.type = type;
+        this.prices = prices;
+    }
+
 
     public String getName() {
         return name;
@@ -34,4 +44,10 @@ public class SandwichTopping {
     public String toString(SandwichSize sandwichSize) {
         return getName() + " topping: " + getPrices().get(sandwichSize);
     }
+
+    private List<SandwichTopping> selectToppings() {
+        // Placeholder logic
+        return new ArrayList<>(); // Default return value, to be replaced with actual logic
+    }
+
 }

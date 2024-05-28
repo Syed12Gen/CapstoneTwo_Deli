@@ -1,4 +1,5 @@
 package com.ps;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -7,6 +8,13 @@ public class OrderScreen {
     private Scanner scanner = new Scanner(System.in);
     // Initialize the order list to store products
     private List<Product> order = new ArrayList<>();
+
+    // Define static instances of SandwichTopping
+    private static final SandwichTopping LETTUCE = new SandwichTopping("Lettuce", "Vegetable", new HashMap<>());
+    private static final SandwichTopping TOMATO = new SandwichTopping("Tomato", "Vegetable", new HashMap<>());
+    private static final SandwichTopping ONION = new SandwichTopping("Onion", "Vegetable", new HashMap<>());
+    private static final SandwichTopping CHEESE = new SandwichTopping("Cheese", "Dairy", new HashMap<>());
+    private static final SandwichTopping BACON = new SandwichTopping("Bacon", "Meat", new HashMap<>());
 
     /**
      * This method initiates the order process.
@@ -83,22 +91,92 @@ public class OrderScreen {
 
     // Prompts the user to select the bread type.Placeholder!
     private BreadType selectBreadType() {
-        return BreadType.WHITE;
+        System.out.println("Select the type of bread for your sandwich:");
+        System.out.println("1. WHITE");
+        System.out.println("2. WHEAT");
+        System.out.println("3. RYE");
+        System.out.println("4. WRAP");
+        int breadChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (breadChoice) {
+            case 1: return BreadType.WHITE;
+            case 2: return BreadType.WHEAT;
+            case 3: return BreadType.RYE;
+            case 4: return BreadType.WRAP;
+            default: throw new IllegalArgumentException("Invalid choice");
+        }
     }
 
     //Prompts the user to select the sandwich size. Placeholder!
     private SandwichSize selectSandwichSize() {
-        return SandwichSize.EIGHT_INCH;
+        System.out.println("Select the size of your sandwich:");
+        System.out.println("1. FOUR_INCH");
+        System.out.println("2. SIX_INCH");
+        System.out.println("3. TWELVE_INCH");
+        int sizeChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (sizeChoice) {
+            case 1: return SandwichSize.FOUR_INCH;
+            case 2: return SandwichSize.EIGHT_INCH;
+            case 3: return SandwichSize.TWELVE_INCH;
+            default: throw new IllegalArgumentException("Invalid choice");
+        }
     }
 
      // Prompts the user to select toppings. Placeholder!
     private List<SandwichTopping> selectToppings() {
-        return new ArrayList<>();
+        List<SandwichTopping> toppings;
+        while (true) {
+            toppings = new ArrayList<>();
+            System.out.println("Select a topping to add:");
+            System.out.println("1. LETTUCE");
+            System.out.println("2. TOMATO");
+            System.out.println("3. ONION");
+            System.out.println("4. CHEESE");
+            System.out.println("5. BACON");
+            int toppingChoice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            SandwichTopping selectedTopping;
+            switch (toppingChoice) {
+                case 1:
+                    selectedTopping = LETTUCE;
+                    break;
+                case 2:
+                    selectedTopping = TOMATO;
+                    break;
+                case 3:
+                    selectedTopping = ONION;
+                    break;
+                case 4:
+                    selectedTopping = CHEESE;
+                    break;
+                case 5:
+                    selectedTopping = BACON;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid choice");
+            }
+
+            toppings.add(selectedTopping);
+
+            System.out.println("Would you like to add another topping? (yes/no)");
+            String another = scanner.nextLine();
+            if (!another.equalsIgnoreCase("yes")) {
+                break;
+            }
+        }
+        return toppings;
     }
+
 
     // Prompts the user if they want the sandwich toasted. Placeholder!
     private boolean isToasted() {
-        return false;
+        System.out.println("Would you like your sandwich toasted? (yes/no)");
+        String toastedChoice = scanner.nextLine();
+        return toastedChoice.equalsIgnoreCase("yes");
     }
 
     // Prompts the user to add drink.
