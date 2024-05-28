@@ -45,18 +45,78 @@ public class OrderScreen {
         }
     }
 
+    /** The addSandwich method will guide the user through the process of creating a sandwich,
+     * and then add the created sandwich to the order list.
+     */
     private void  addSandwich() {
-        System.out.println("Add Sandwich method called.");
+        // Call the method to create a sandwich
+       Sandwich sandwich = createSandwich();
+       // Add the sandwich to the beginning of the order list
+        order.add(0, sandwich);
+        System.out.println("Sandwich added to the order.");
     }
+
+    /** The createSandwich method will guide the user through selecting the option like:
+     *  bread type, sandwich size, and toppings for the sandwich.
+    */
+    private Sandwich createSandwich() {
+        Sandwich sandwich = new Sandwich();
+
+        // Step 1: Select bread type
+        BreadType breadType = selectBreadType();
+        sandwich.setBreadType(breadType);
+
+        // Step 2: Select sandwich size
+        SandwichSize size = selectSandwichSize();
+        sandwich.setSize(size);
+
+        // Step 3: Add toppings
+        List<SandwichTopping> toppings = selectToppings();
+        sandwich.setToppings(toppings);
+
+        // Step 4: Ask if toasted
+        boolean toasted = isToasted();
+        sandwich.setToasted(toasted);
+
+        return sandwich;
+    }
+
+    // Prompts the user to select the bread type.Placeholder!
+    private BreadType selectBreadType() {
+        return BreadType.WHITE;
+    }
+
+    //Prompts the user to select the sandwich size. Placeholder!
+    private SandwichSize selectSandwichSize() {
+        return SandwichSize.EIGHT_INCH;
+    }
+
+     // Prompts the user to select toppings. Placeholder!
+    private List<SandwichTopping> selectToppings() {
+        return new ArrayList<>();
+    }
+
+    // Prompts the user if they want the sandwich toasted. Placeholder!
+    private boolean isToasted() {
+        return false;
+    }
+
+    // Prompts the user to add drink.
     private void  addDrink() {
         System.out.println("Add Drink method called.");
     }
+
+    // Prompts the user to add chips.
     private void addChips() {
         System.out.println("Add Chips method called.");
     }
+
+    // Prompts the user checkout the order.
     private void  checkout() {
         System.out.println("Checkout method called.");
     }
+
+    // Prompts the user to cancel the order
     private void cancelOrder() {
         System.out.println("Cancel Order method called.");
     }
