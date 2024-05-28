@@ -8,16 +8,21 @@ public class HomeScreen {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            // // Display the home screen menu options
             System.out.println("Welcome to the Sandwich Shop!");
             System.out.println("1. New Order");
             System.out.println("0. Exit");
             System.out.print("Select an option: ");
+            //Reads an integer input
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline
+            // Consume the leftover newline character
+            scanner.nextLine();
 
             if (choice == 1) {
+                // Creates a new instance of the OrderScreen class, allowing us to use its methods.
                 OrderScreen orderScreen = new OrderScreen();
-                orderScreen.startOrder(); // Start a new order
+                // Calls the startOrder method on the OrderScreen object
+                orderScreen.startOrder();
             } else if (choice == 0) {
                 System.out.println("Thank you for visiting! Goodbye!");
                 break; // Exit the loop and end the program
