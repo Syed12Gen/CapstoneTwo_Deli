@@ -179,16 +179,132 @@ public class OrderScreen {
         return toastedChoice.equalsIgnoreCase("yes");
     }
 
-    // Prompts the user to add drink.
+   // Prompts the user to add a drink to the order.
     private void  addDrink() {
-        System.out.println("Add Drink method called.");
+        // Call the method to create a drink
+        Drink drink = createDrink();
+        // Add the drink to the beginning of the order list
+        order.add(0, drink);
+        System.out.println("Drink added to the order.");
     }
 
-    // Prompts the user to add chips.
+    /**The createDrink method will guide the user through selecting the option like:
+     * "drink size" and "flavor". It also sets the price based on the size. */
+    private Drink createDrink() {
+        Drink drink = new Drink();
+
+        // Select drink size
+        Sizes size = selectDrinkSize();
+        drink.setSize(size);
+
+        // Select drink flavor
+        DrinkFlavor flavor = selectDrinkFlavor();
+        drink.setFlavor(flavor);
+
+        // Set the price based on the size
+        double price = getDrinkPrice(size);
+        drink.setPrice(price);
+
+        return drink;
+
+    }
+
+    // Prompts the user to select the drink size.
+    private Sizes selectDrinkSize() {
+        System.out.println("Select the size of your drink:");
+        System.out.println("1. Small");
+        System.out.println("2. Medium");
+        System.out.println("3. Large");
+        int sizeChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (sizeChoice) {
+            case 1: return Sizes.SMALL;
+            case 2: return Sizes.MEDIUM;
+            case 3: return Sizes.LARGE;
+            default: throw new IllegalArgumentException("Invalid choice");
+        }
+    }
+
+    // Prompts the user to select the drink flavor.
+    private DrinkFlavor selectDrinkFlavor() {
+        System.out.println("Select the flavor of your drink:");
+        System.out.println("1. Pineapple");
+        System.out.println("2. Orange");
+        System.out.println("3. Mixed fruit");
+        int flavorChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (flavorChoice) {
+            case 1: return DrinkFlavor.PINEAPPLE;
+            case 2: return DrinkFlavor.ORANGE;
+            case 3: return DrinkFlavor.MIXED_FRUIT;
+            default: throw new IllegalArgumentException("Invalid choice");
+        }
+    }
+
+    // Returns the price of the drink based on the size.
+    private double getDrinkPrice(Sizes size) {
+        switch (size) {
+            case SMALL: return 2.00;
+            case MEDIUM: return 2.50;
+            case LARGE: return 3.00;
+            default: throw new IllegalArgumentException("Invalid size");
+        }
+    }
+
+    // Prompts the user to add chips to the order.
     private void addChips() {
-        System.out.println("Add Chips method called.");
+        // Call the method to create chips
+        Chips chips = createChips();
+        // Add the chips to the beginning of the order list
+        order.add(0, chips);
+        System.out.println("Chips added to the order.");
     }
 
+    /** The createChips method will guide the user through selecting the option like:
+     * "chips size". It also sets the price based on the size. */
+    private Chips createChips() {
+        Chips chips = new Chips();
+
+        // Select chips size
+        Sizes size = selectChipsSize();
+        chips.setSize(size);
+
+        // Set the price based on the size
+        double price = getChipsPrice(size);
+        chips.setPrice(price);
+
+        return chips;
+    }
+
+    // Prompts the user to select the chips size.
+    private Sizes selectChipsSize() {
+        System.out.println("Select the size of your chips:");
+        System.out.println("1. Small");
+        System.out.println("2. Medium");
+        System.out.println("3. Large");
+        int sizeChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (sizeChoice) {
+            case 1: return Sizes.SMALL;
+            case 2: return Sizes.MEDIUM;
+            case 3: return Sizes.LARGE;
+            default: throw new IllegalArgumentException("Invalid choice");
+        }
+    }
+
+    // Returns the price of the chips based on the size.
+    private double getChipsPrice(Sizes size) {
+        switch (size) {
+            case SMALL: return 1.00;
+            case MEDIUM: return 1.50;
+            case LARGE: return 2.00;
+            default: throw new IllegalArgumentException("Invalid size");
+        }
+    }
+    
     // Prompts the user checkout the order.
     private void  checkout() {
         System.out.println("Checkout method called.");
