@@ -44,10 +44,4 @@ public class SandwichTopping {
     public String toString(SandwichSize sandwichSize) {
         return getName() + " topping: " + getPrices().get(sandwichSize);
     }
-
-    private List<SandwichTopping> selectToppings() {
-        // Placeholder logic
-        return new ArrayList<>(); // Default return value, to be replaced with actual logic
-    }
-
 }

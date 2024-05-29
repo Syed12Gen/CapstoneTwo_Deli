@@ -40,40 +40,42 @@ public class Sandwich extends Product {
         this.toasted = toasted;
     }
 
-    @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        //R1: Append the bread type
-        stringBuilder.append(breadType.toString());
+        // R1: Append the bread type
+        stringBuilder.append(breadType.toString()).append(" ");
 
-        // R2: Append toasted Status
+        // R2: Append toasted status
         if (toasted) {
-            stringBuilder.append("toasted");
+            stringBuilder.append("toasted ");
         }
 
-        // R3: Sandwich Size
-        stringBuilder.append("sandwich").append(size.toString());
+        // R3: Append sandwich size
+        stringBuilder.append("sandwich ").append(size.toString()).append(": ");
 
         // R4: Calculate the total price
         double basePrice = getPrice();
-        double toppingTotal = toppings.stream()
-                .map(t -> t.getPrices().get(size))
-                .reduce((i, d) -> i + d)
-                .orElse(0.0);
+        double toppingTotal = 0.0;
+        for (SandwichTopping topping : toppings) {
+            Double price = topping.getPrices().get(size);
+            if (price != null) {
+                toppingTotal += price;
+            }
+        }
         double totalPrice = basePrice + toppingTotal;
-        stringBuilder.append(": ").append(totalPrice).append("\n");
+        stringBuilder.append(totalPrice).append("\n");
 
         // R5: Append the base sandwich price
         stringBuilder.append("Base sandwich: ").append(basePrice).append("\n");
 
         // R6: Append each topping and its price
         for (SandwichTopping topping : toppings) {
-            stringBuilder.append(" ")
-            .append(topping.getName())
-            .append(": ").append(topping
-            .getPrices().get(size))
-            .append("\n");
+            Double toppingPrice = topping.getPrices().get(size);
+            if (toppingPrice == null) {
+                toppingPrice = 0.0;
+            }
+            stringBuilder.append(" ").append(topping.getName()).append(": ").append(toppingPrice).append("\n");
         }
         return stringBuilder.toString();
     }

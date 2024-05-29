@@ -1,5 +1,6 @@
 package com.ps;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -14,11 +15,25 @@ public class OrderScreen {
     private List<Product> order = new ArrayList<>();
 
     // Define static instances of SandwichTopping
-    private static final SandwichTopping LETTUCE = new SandwichTopping("Lettuce", "Vegetable", new HashMap<>());
-    private static final SandwichTopping TOMATO = new SandwichTopping("Tomato", "Vegetable", new HashMap<>());
-    private static final SandwichTopping ONION = new SandwichTopping("Onion", "Vegetable", new HashMap<>());
-    private static final SandwichTopping CHEESE = new SandwichTopping("Cheese", "Dairy", new HashMap<>());
-    private static final SandwichTopping BACON = new SandwichTopping("Bacon", "Meat", new HashMap<>());
+    private static final SandwichTopping LETTUCE =
+            new SandwichTopping("Lettuce", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping TOMATO =
+            new SandwichTopping("Tomato", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping ONION =
+            new SandwichTopping("Onion", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping CHEESE =
+            new SandwichTopping("Cheese", "Dairy", createPricesMap(0.75, 1.50, 2.25));
+    private static final SandwichTopping BACON =
+            new SandwichTopping("Bacon", "Meat", createPricesMap(1.00, 2.00, 3.00));
+
+    // Create prices map
+    private static Map<SandwichSize, Double> createPricesMap(double smallPrice, double mediumPrice, double largePrice) {
+        Map<SandwichSize, Double> prices = new HashMap<>();
+        prices.put(SandwichSize.FOUR_INCH, smallPrice);
+        prices.put(SandwichSize.EIGHT_INCH, mediumPrice);
+        prices.put(SandwichSize.TWELVE_INCH, largePrice);
+        return prices;
+    }
 
     /**
      * This method initiates the order process.
