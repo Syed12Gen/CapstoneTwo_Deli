@@ -3,6 +3,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class OrderScreen {
     private Scanner scanner = new Scanner(System.in);
@@ -112,7 +116,7 @@ public class OrderScreen {
     private SandwichSize selectSandwichSize() {
         System.out.println("Select the size of your sandwich:");
         System.out.println("1. FOUR_INCH");
-        System.out.println("2. SIX_INCH");
+        System.out.println("2. EIGHT_INCH");
         System.out.println("3. TWELVE_INCH");
         int sizeChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
@@ -304,14 +308,77 @@ public class OrderScreen {
             default: throw new IllegalArgumentException("Invalid size");
         }
     }
-    
+
     // Prompts the user checkout the order.
     private void  checkout() {
-        System.out.println("Checkout method called.");
+        // 1. Gather Order Details
+        StringBuilder orderDetails = new StringBuilder();
+        double totalPrice = 0.0;
+
+        orderDetails.append("Receipt:\n")
+                .append("------------------------------------------------\n");
+
+        for (Product item : order) {
+            orderDetails.append(item.toString()).append("\n");
+            totalPrice += item.getPrice();
+        }
+
+        orderDetails.append("------------------------------------------------\n")
+                .append("Total Price: $").append(totalPrice).append("\n");
+
+        // 2. Display Order Details
+        System.out.println(orderDetails.toString());
+
+        // 3. Ask for Confirmation
+        System.out.println("Do you want to confirm the order? (yes/no)");
+        String confirmation = scanner.nextLine();
+
+        if (confirmation.equalsIgnoreCase("yes")) {
+            // 4. Generate Receipt
+            String receipt = orderDetails.toString();
+
+            // 5. Save Receipt
+            String dateTime = getCurrentDateTime();
+            String fileName = "receipts/" + dateTime + ".txt";
+            saveToFile(fileName, receipt);
+
+            // 6. Print Confirmation
+            System.out.println("Order completed! Your receipt has been saved as " + fileName + ".");
+
+            // 7. Clear the order list to start fresh
+            order.clear();
+        } else {
+            // Call the cancelOrder method
+            cancelOrder();
+        }
+
+        // Return to the home screen
+        HomeScreen.main(new String[0]);
     }
 
-    // Prompts the user to cancel the order
-    private void cancelOrder() {
-        System.out.println("Cancel Order method called.");
+    // Returns the current date and time as a string in the format yyyyMMdd-HHmmss.
+    private String getCurrentDateTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
     }
+
+    //  Saves the given content to a file with the specified file name.
+    private void saveToFile(String fileName, String content) {
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
+            fileWriter.write(content);
+        } catch (IOException e) {
+            System.err.println("Error: Unable to save receipt to file " + fileName);
+        }
+    }
+
+    // Cancels the order and returns to the home screen.
+    private void cancelOrder() {
+        System.out.println("Order cancelled. Returning to the home screen.");
+
+        // Clear the order list to discard the current order
+        order.clear();
+    }
+
+
 }
