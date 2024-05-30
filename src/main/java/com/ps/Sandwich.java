@@ -79,4 +79,17 @@ public class Sandwich extends Product {
         }
         return stringBuilder.toString();
     }
+
+    // R7: Calculate the total price
+    public double calculateTotalPrice() {
+        double basePrice = getPrice();
+        double toppingTotal = 0.0;
+        for (SandwichTopping topping : toppings) {
+            Double price = topping.getPrices().get(size);
+            if (price != null) {
+                toppingTotal += price;
+            }
+        }
+        return basePrice + toppingTotal;
+    }
 }

@@ -236,11 +236,24 @@ public class OrderScreen {
         List<SandwichTopping> toppings = new ArrayList<>();
         while (true) {
             System.out.println("\nSelect a topping to add:");
-            System.out.println("1. LETTUCE");
-            System.out.println("2. TOMATO");
-            System.out.println("3. ONION");
-            System.out.println("4. CHEESE");
-            System.out.println("5. BACON");
+            System.out.println("\nSelect a topping to add:");
+            System.out.println("1. LETTUCE (Regular)");
+            System.out.println("2. TOMATO (Regular)");
+            System.out.println("3. ONION (Regular)");
+            System.out.println("4. CHEESE (Premium)");
+            System.out.println("5. BACON (Premium)");
+            System.out.println("6. EXTRA_CHEESE (Premium)");
+            System.out.println("7. SALAMI (Premium)");
+            System.out.println("8. HAM (Premium)");
+            System.out.println("9. CHICKEN (Premium)");
+            System.out.println("10. STEAK (Premium)");
+            System.out.println("11. ROAST_BEEF (Premium)");
+            System.out.println("12. PEPPERS (Regular)");
+            System.out.println("13. CUCUMBERS (Regular)");
+            System.out.println("14. PICKLES (Regular)");
+            System.out.println("15. JALAPENOS (Regular)");
+            System.out.println("16. MUSHROOMS (Regular)");
+            System.out.println("17. GUACAMOLE (Regular)");
             int toppingChoice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -491,8 +504,13 @@ public class OrderScreen {
 
         for (Product item : order) {
             orderDetails.append(item.toString()).append("\n");
-            totalPrice += item.getPrice();
+            if (item instanceof Sandwich) {
+                totalPrice += ((Sandwich) item).calculateTotalPrice();
+            } else {
+                totalPrice += item.getPrice();
+            }
         }
+
 
         orderDetails.append("------------------------------------------------\n")
                 .append("Total Price: $").append(totalPrice).append("\n");
