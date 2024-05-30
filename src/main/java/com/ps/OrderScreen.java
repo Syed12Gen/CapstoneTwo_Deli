@@ -1,4 +1,5 @@
 package com.ps;
+import java.io.File;
 import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,16 +19,25 @@ public class OrderScreen {
     }
 
     // Define static instances of SandwichTopping
-    private static final SandwichTopping LETTUCE =
-            new SandwichTopping("Lettuce", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
-    private static final SandwichTopping TOMATO =
-            new SandwichTopping("Tomato", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
-    private static final SandwichTopping ONION =
-            new SandwichTopping("Onion", "Vegetable", createPricesMap(0.0, 0.0, 0.0));
-    private static final SandwichTopping CHEESE =
-            new SandwichTopping("Cheese", "Dairy", createPricesMap(0.75, 1.50, 2.25));
-    private static final SandwichTopping BACON =
-            new SandwichTopping("Bacon", "Meat", createPricesMap(1.00, 2.00, 3.00));
+    private static final SandwichTopping LETTUCE = new SandwichTopping(Toppings.LETTUCE, createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping TOMATO = new SandwichTopping(Toppings.TOMATO, createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping ONION = new SandwichTopping(Toppings.ONION, createPricesMap(0.0, 0.0, 0.0));
+    private static final SandwichTopping CHEESE = new SandwichTopping(Toppings.CHEESE, createPricesMap(0.75, 1.50, 2.25));
+    private static final SandwichTopping BACON = new SandwichTopping(Toppings.BACON, createPricesMap(1.00, 2.00, 3.00));
+    private static final SandwichTopping EXTRA_CHEESE = new SandwichTopping(Toppings.EXTRA_CHEESE, createPricesMap(0.30, 0.60, 0.90));
+    private static final SandwichTopping SALAMI = new SandwichTopping(Toppings.SALAMI, createPricesMap(1.00, 2.00, 3.00));
+    private static final SandwichTopping HAM = new SandwichTopping(Toppings.HAM, createPricesMap(1.00, 2.00, 3.00));
+    private static final SandwichTopping CHICKEN = new SandwichTopping(Toppings.CHICKEN, createPricesMap(1.00, 2.00, 3.00));
+    private static final SandwichTopping STEAK = new SandwichTopping(Toppings.STEAK, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping ROAST_BEEF = new SandwichTopping(Toppings.ROAST_BEEF, createPricesMap(0.75, 1.50, 2.25));
+    private static final SandwichTopping PEPPERS = new SandwichTopping(Toppings.PEPPERS, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping CUCUMBERS = new SandwichTopping(Toppings.CUCUMBERS, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping PICKLES = new SandwichTopping(Toppings.PICKLES, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping JALAPENOS = new SandwichTopping(Toppings.JALAPENOS, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping MUSHROOMS = new SandwichTopping(Toppings.MUSHROOMS, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping GUACAMOLE = new SandwichTopping(Toppings.GUACAMOLE, createPricesMap(0.00, 0.00, 0.00));
+
+
 
     // Create prices map
     private static Map<SandwichSize, Double> createPricesMap(double smallPrice, double mediumPrice, double largePrice) {
@@ -185,42 +195,6 @@ public class OrderScreen {
         return sandwich;
     }
 
-    // Prompts the user to remove toppings from the sandwich.
-    private void removeToppings(List<SandwichTopping> toppings, Sandwich sandwich) {
-        if(toppings.isEmpty()) {
-            System.out.println("There are no toppings to remove.");
-            return;
-        }
-
-        System.out.println("Select the toppings you would like remove.");
-
-        for(int i = 0; i < toppings.size(); i++) {
-            System.out.printf("%d. %s %n", i + 1, toppings.get(i).toString(sandwich.getSize()));
-        }
-
-        System.out.println("0. Exit");
-
-        while (true) {
-            int choice;
-            try {
-                choice = scanner.nextInt();
-            } catch (InputMismatchException ex) {
-                System.out.println("You have entered an invalid choice. Please try again.");
-                continue;
-            }
-
-            if (choice >= 1 && choice < toppings.size() + 1) {
-                toppings.remove(choice - 1);
-                System.out.println("Topping removed successfully.");
-                removeToppings(toppings, sandwich);
-            } else if (choice == 0) {
-                break;
-            } else {
-                System.out.println("You have entered an invalid choice. Please try again.");
-            }
-        }
-    }
-
     // Prompts the user to select the bread type.Placeholder!
     private BreadType selectBreadType() {
         System.out.println("\nSelect the type of bread for your sandwich:");
@@ -257,11 +231,10 @@ public class OrderScreen {
         }
     }
 
-    // Prompts the user to select toppings. Placeholder!
+    // Prompts the user to select toppings.
     private List<SandwichTopping> selectToppings() {
-        List<SandwichTopping> toppings;
+        List<SandwichTopping> toppings = new ArrayList<>();
         while (true) {
-            toppings = new ArrayList<>();
             System.out.println("\nSelect a topping to add:");
             System.out.println("1. LETTUCE");
             System.out.println("2. TOMATO");
@@ -288,6 +261,42 @@ public class OrderScreen {
                 case 5:
                     selectedTopping = BACON;
                     break;
+                case 6:
+                    selectedTopping = EXTRA_CHEESE;
+                    break;
+                case 7:
+                    selectedTopping = SALAMI;
+                    break;
+                case 8:
+                    selectedTopping = HAM;
+                    break;
+                case 9:
+                    selectedTopping = CHICKEN;
+                    break;
+                case 10:
+                    selectedTopping = STEAK;
+                    break;
+                case 11:
+                    selectedTopping = ROAST_BEEF;
+                    break;
+                case 12:
+                    selectedTopping = PEPPERS;
+                    break;
+                case 13:
+                    selectedTopping = CUCUMBERS;
+                    break;
+                case 14:
+                    selectedTopping = PICKLES;
+                    break;
+                case 15:
+                    selectedTopping = JALAPENOS;
+                    break;
+                case 16:
+                    selectedTopping = MUSHROOMS;
+                    break;
+                case 17:
+                    selectedTopping = GUACAMOLE;
+                    break;
                 default:
                     throw new IllegalArgumentException("Invalid choice");
             }
@@ -303,6 +312,41 @@ public class OrderScreen {
         return toppings;
     }
 
+    // Prompts the user to remove toppings from the sandwich.
+    private void removeToppings(List<SandwichTopping> toppings, Sandwich sandwich) {
+        if(toppings.isEmpty()) {
+            System.out.println("There are no toppings to remove.");
+            return;
+        }
+
+        System.out.println("Select the toppings you would like remove.");
+
+        for(int i = 0; i < toppings.size(); i++) {
+            System.out.printf("%d. %s %n", i + 1, toppings.get(i).toString(sandwich.getSize()));
+        }
+
+        System.out.println("0. Exit");
+
+        while (true) {
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException ex) {
+                System.out.println("You have entered an invalid choice. Please try again.");
+                continue;
+            }
+
+            if (choice >= 1 && choice < toppings.size() + 1) {
+                toppings.remove(choice - 1);
+                System.out.println("Topping removed successfully.");
+                removeToppings(toppings, sandwich);
+            } else if (choice == 0) {
+                break;
+            } else {
+                System.out.println("You have entered an invalid choice. Please try again.");
+            }
+        }
+    }
 
     // Prompts the user if they want the sandwich toasted. Placeholder!
     private boolean isToasted() {
@@ -494,7 +538,7 @@ public class OrderScreen {
         return dtf.format(now);
     }
 
-    //  Saves the given content to a file with the specified file name.
+     // Saves the given content to a file with the specified file name.
     private void saveToFile(String fileName, String content) {
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.write(content);
