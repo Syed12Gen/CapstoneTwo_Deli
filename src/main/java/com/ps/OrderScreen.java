@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.BufferedWriter;
 
 public class OrderScreen {
     private Scanner scanner = new Scanner(System.in);
@@ -556,14 +557,25 @@ public class OrderScreen {
         return dtf.format(now);
     }
 
-     // Saves the given content to a file with the specified file name.
+    // Saves the receipt to a file with the specified file name.
     private void saveToFile(String fileName, String content) {
-        try (FileWriter fileWriter = new FileWriter(fileName)) {
-            fileWriter.write(content);
+        // Ensure the receipts directory exists
+        File directory = new File("receipts");
+        if (!directory.exists()) {
+            if (!directory.mkdir()) {
+                System.out.println("Error: Could not create the receipts folder. Please check your permissions.");
+                return;
+            }
+        }
+
+        // Save the receipt to a file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            bw.write(content);
         } catch (IOException e) {
-            System.err.println("Error: Unable to save receipt to file " + fileName);
+            System.out.println("Error: Unable to save the receipt. Please try again.");
         }
     }
+
 
     // Cancels the order and returns to the home screen.
     private void cancelOrder() {

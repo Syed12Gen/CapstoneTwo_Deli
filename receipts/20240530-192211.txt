@@ -1,0 +1,24 @@
+Customer Name: syed
+Customer Email: syed@gmail.com
+
+Receipt:
+------------------------------------------------
+Large Mixed fruit drink: 3.0
+Medium Orange drink: 2.5
+Medium chips: 1.5
+Medium chips: 1.5
+Small chips: 1.0
+Small Pineapple drink: 2.0
+White toasted sandwich 12-inch: 15.15
+Base sandwich: 0.0
+ BACON: 3.0
+ HAM: 3.0
+ ROAST_BEEF: 2.25
+ CHICKEN: 3.0
+ EXTRA_CHEESE: 0.9
+ JALAPENOS: 0.0
+ MUSHROOMS: 0.0
+ BACON: 3.0
+
+------------------------------------------------
+Total Price: $26.65
