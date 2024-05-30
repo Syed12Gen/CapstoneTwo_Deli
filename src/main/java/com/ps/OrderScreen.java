@@ -80,15 +80,15 @@ public class OrderScreen {
      */
     private void  addSandwich() {
         // Call the method to create a sandwich
-       Sandwich sandwich = createSandwich();
-       // Add the sandwich to the beginning of the order list
+        Sandwich sandwich = createSandwich();
+        // Add the sandwich to the beginning of the order list
         order.add(0, sandwich);
         System.out.println("\nSandwich added to the order.");
     }
 
     /** The createSandwich method will guide the user through selecting the option like:
      *  bread type, sandwich size, and toppings for the sandwich.
-    */
+     */
     private Sandwich createSandwich() {
         System.out.println("What kind of sandwich would you like?");
         System.out.println("1. Custom (make it the way you like)");
@@ -257,7 +257,7 @@ public class OrderScreen {
         }
     }
 
-     // Prompts the user to select toppings. Placeholder!
+    // Prompts the user to select toppings. Placeholder!
     private List<SandwichTopping> selectToppings() {
         List<SandwichTopping> toppings;
         while (true) {
@@ -311,7 +311,7 @@ public class OrderScreen {
         return toastedChoice.equalsIgnoreCase("yes");
     }
 
-   // Prompts the user to add a drink to the order.
+    // Prompts the user to add a drink to the order.
     private void  addDrink() {
         // Call the method to create a drink
         Drink drink = createDrink();

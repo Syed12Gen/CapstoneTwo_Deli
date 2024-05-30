@@ -44,14 +44,14 @@ public class Order {
         return orderDetails.toString();
     }
 
-public void printReceipt() {
-    String receiptName = orderedAt.format(DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss"));
-    File receiptFile = new File(receiptName + ".txt");
-    try {
-        BufferedWriter writer = new BufferedWriter(new PrintWriter(receiptFile));
-        writer.write(this.toString());
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
+    public void printReceipt() {
+        String receiptName = orderedAt.format(DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss"));
+        File receiptFile = new File(receiptName + ".txt");
+        try {
+            BufferedWriter writer = new BufferedWriter(new PrintWriter(receiptFile));
+            writer.write(this.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
