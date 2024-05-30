@@ -13,6 +13,13 @@ public class OrderScreen {
     private Scanner scanner = new Scanner(System.in);
     // Initialize the order list to store products
     private List<Product> order = new ArrayList<>();
+    // Customer object
+    private Customer customer;
+
+    // Constructor to initialize the customer
+    public OrderScreen(Customer customer) {
+        this.customer = customer;
+    }
 
     // Define static instances of SandwichTopping
     private static final SandwichTopping LETTUCE =
@@ -43,12 +50,12 @@ public class OrderScreen {
     public void startOrder() {
         while (true) {
             // Display the order screen menu options
-            System.out.println("Order Screen:");
+            System.out.println("\nOrder Screen:");
             System.out.println("1. Add Sandwich");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Chips");
             System.out.println("4. Checkout");
-            System.out.println("0. Cancel Order");
+            System.out.println("0. Cancel Order\n");
             System.out.print("Select an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline
@@ -80,7 +87,7 @@ public class OrderScreen {
        Sandwich sandwich = createSandwich();
        // Add the sandwich to the beginning of the order list
         order.add(0, sandwich);
-        System.out.println("Sandwich added to the order.");
+        System.out.println("\nSandwich added to the order.");
     }
 
     /** The createSandwich method will guide the user through selecting the option like:
@@ -110,11 +117,11 @@ public class OrderScreen {
 
     // Prompts the user to select the bread type.Placeholder!
     private BreadType selectBreadType() {
-        System.out.println("Select the type of bread for your sandwich:");
+        System.out.println("\nSelect the type of bread for your sandwich:");
         System.out.println("1. WHITE");
         System.out.println("2. WHEAT");
         System.out.println("3. RYE");
-        System.out.println("4. WRAP");
+        System.out.println("4. WRAP\n");
         int breadChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -129,10 +136,10 @@ public class OrderScreen {
 
     //Prompts the user to select the sandwich size. Placeholder!
     private SandwichSize selectSandwichSize() {
-        System.out.println("Select the size of your sandwich:");
+        System.out.println("\nSelect the size of your sandwich:");
         System.out.println("1. FOUR_INCH");
         System.out.println("2. EIGHT_INCH");
-        System.out.println("3. TWELVE_INCH");
+        System.out.println("3. TWELVE_INCH\n");
         int sizeChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -149,7 +156,7 @@ public class OrderScreen {
         List<SandwichTopping> toppings;
         while (true) {
             toppings = new ArrayList<>();
-            System.out.println("Select a topping to add:");
+            System.out.println("\nSelect a topping to add:");
             System.out.println("1. LETTUCE");
             System.out.println("2. TOMATO");
             System.out.println("3. ONION");
@@ -230,10 +237,10 @@ public class OrderScreen {
 
     // Prompts the user to select the drink size.
     private Sizes selectDrinkSize() {
-        System.out.println("Select the size of your drink:");
+        System.out.println("\nSelect the size of your drink:");
         System.out.println("1. Small");
         System.out.println("2. Medium");
-        System.out.println("3. Large");
+        System.out.println("3. Large\n");
         int sizeChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -247,10 +254,10 @@ public class OrderScreen {
 
     // Prompts the user to select the drink flavor.
     private DrinkFlavor selectDrinkFlavor() {
-        System.out.println("Select the flavor of your drink:");
+        System.out.println("\nSelect the flavor of your drink:");
         System.out.println("1. Pineapple");
         System.out.println("2. Orange");
-        System.out.println("3. Mixed fruit");
+        System.out.println("3. Mixed fruit\n");
         int flavorChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -278,7 +285,7 @@ public class OrderScreen {
         Chips chips = createChips();
         // Add the chips to the beginning of the order list
         order.add(0, chips);
-        System.out.println("Chips added to the order.");
+        System.out.println("\nChips added to the order.");
     }
 
     /** The createChips method will guide the user through selecting the option like:
@@ -299,10 +306,10 @@ public class OrderScreen {
 
     // Prompts the user to select the chips size.
     private Sizes selectChipsSize() {
-        System.out.println("Select the size of your chips:");
+        System.out.println("\nSelect the size of your chips:");
         System.out.println("1. Small");
         System.out.println("2. Medium");
-        System.out.println("3. Large");
+        System.out.println("3. Large\n");
         int sizeChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -324,7 +331,6 @@ public class OrderScreen {
         }
     }
 
-    // Prompts the user checkout the order.
     private void  checkout() {
         // 1. Gather Order Details
         StringBuilder orderDetails = new StringBuilder();
@@ -341,6 +347,8 @@ public class OrderScreen {
         orderDetails.append("------------------------------------------------\n")
                 .append("Total Price: $").append(totalPrice).append("\n");
 
+        String receipt = orderDetails.toString();
+
         // 2. Display Order Details
         System.out.println(orderDetails.toString());
 
@@ -350,7 +358,9 @@ public class OrderScreen {
 
         if (confirmation.equalsIgnoreCase("yes")) {
             // 4. Generate Receipt
-            String receipt = orderDetails.toString();
+            receipt = "Customer Name: " + customer.getName() + "\n" +
+                    "Customer Email: " + customer.getEmail() + "\n\n" +
+                    receipt;
 
             // 5. Save Receipt
             String dateTime = getCurrentDateTime();
@@ -394,6 +404,4 @@ public class OrderScreen {
         // Clear the order list to discard the current order
         order.clear();
     }
-
-
 }
