@@ -1,9 +1,5 @@
 package com.ps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -147,11 +143,11 @@ public class OrderScreen {
 
         while(true)  {
             if(choice.equals("1")) {
-                sandwich = new Blt();
+//                sandwich = new Blt();
                 break;
             }
             else if(choice.equals("2")) {
-                sandwich = new PhillyCheeseSteak();
+//                sandwich = new PhillyCheeseSteak();
                 break;
             }
             else if(choice.equals("0")) {
@@ -189,9 +185,40 @@ public class OrderScreen {
         return sandwich;
     }
 
-    // Placeholder method to remove toppings from the sandwich
+    // Prompts the user to remove toppings from the sandwich.
     private void removeToppings(List<SandwichTopping> toppings, Sandwich sandwich) {
-        System.out.println("Select the topping you would like to remove:");
+        if(toppings.isEmpty()) {
+            System.out.println("There are no toppings to remove.");
+            return;
+        }
+
+        System.out.println("Select the toppings you would like remove.");
+
+        for(int i = 0; i < toppings.size(); i++) {
+            System.out.printf("%d. %s %n", i + 1, toppings.get(i).toString(sandwich.getSize()));
+        }
+
+        System.out.println("0. Exit");
+
+        while (true) {
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException ex) {
+                System.out.println("You have entered an invalid choice. Please try again.");
+                continue;
+            }
+
+            if (choice >= 1 && choice < toppings.size() + 1) {
+                toppings.remove(choice - 1);
+                System.out.println("Topping removed successfully.");
+                removeToppings(toppings, sandwich);
+            } else if (choice == 0) {
+                break;
+            } else {
+                System.out.println("You have entered an invalid choice. Please try again.");
+            }
+        }
     }
 
     // Prompts the user to select the bread type.Placeholder!

@@ -3,10 +3,10 @@ package com.ps;
 import java.util.List;
 
 public class Sandwich extends Product {
-    private BreadType breadType;
-    private SandwichSize size;
-    private List<SandwichTopping> toppings;
-    private boolean toasted;
+    protected BreadType breadType;
+    protected SandwichSize size;
+    protected List<SandwichTopping> toppings;
+    protected boolean toasted;
 
     public BreadType getBreadType() {
         return breadType;
