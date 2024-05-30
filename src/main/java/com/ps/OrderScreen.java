@@ -94,7 +94,28 @@ public class OrderScreen {
      *  bread type, sandwich size, and toppings for the sandwich.
     */
     private Sandwich createSandwich() {
-        Sandwich sandwich = new Sandwich();
+        System.out.println("What kind of sandwich would you like?");
+        System.out.println("1. Custom (make it the way you like)");
+        System.out.println("2. Select from pre-made sandwiches");
+
+        String choice = scanner.nextLine();
+
+        Sandwich sandwich;
+
+        while(true) {
+            if(choice.equals("2")) {
+                sandwich = selectFromTemplateSandwich();
+                return sandwich;
+            }
+            if(choice.equals("1")) {
+                break;
+            }
+            else {
+                System.out.println("You have selected an invalid choice. Please try again.");
+            }
+        }
+
+        sandwich = new Sandwich();
 
         // Step 1: Select bread type
         BreadType breadType = selectBreadType();
@@ -113,6 +134,64 @@ public class OrderScreen {
         sandwich.setToasted(toasted);
 
         return sandwich;
+    }
+
+    private Sandwich selectFromTemplateSandwich() {
+        System.out.println("Select the sandwich you would like.");
+        System.out.println("1. BLT");
+        System.out.println("2. Philly cheese steak");
+        System.out.println("0. Exit");
+
+        String choice = scanner.nextLine();
+        Sandwich sandwich = null;
+
+        while(true)  {
+            if(choice.equals("1")) {
+                sandwich = new Blt();
+                break;
+            }
+            else if(choice.equals("2")) {
+                sandwich = new PhillyCheeseSteak();
+                break;
+            }
+            else if(choice.equals("0")) {
+                return sandwich;
+            }
+            else {
+                System.out.println("Invalid choice. Please try again.");
+            }
+        }
+
+        System.out.println("Would you like to add or remove any toppings?");
+        System.out.println("1. Adding more toppings");
+        System.out.println("2. Remove toppings");
+        System.out.println("0. Exit");
+
+        choice = scanner.nextLine();
+
+        while(true) {
+            if(choice.equals("1")) {
+                sandwich.getToppings().addAll(selectToppings());
+                break;
+            }
+            else if(choice.equals("2")) {
+                removeToppings(sandwich.getToppings(), sandwich);
+                break;
+            }
+            else if(choice.equals("0")) {
+                break;
+            }
+            else {
+                System.out.println("You have entered an invalid choice. Please try again.");
+            }
+        }
+
+        return sandwich;
+    }
+
+    // Placeholder method to remove toppings from the sandwich
+    private void removeToppings(List<SandwichTopping> toppings, Sandwich sandwich) {
+        System.out.println("Select the topping you would like to remove:");
     }
 
     // Prompts the user to select the bread type.Placeholder!

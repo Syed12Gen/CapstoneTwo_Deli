@@ -1,11 +1,20 @@
 package com.ps;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private List<Product> items = new ArrayList<>();
+
     private double total = 0.0;
+
+    private LocalDateTime orderedAt;
 
     public List<Product> getItems() {
         return items;
@@ -33,5 +42,16 @@ public class Order {
         }
         orderDetails.append("Total Price: $").append(total);
         return orderDetails.toString();
+    }
+
+public void printReceipt() {
+    String receiptName = orderedAt.format(DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss"));
+    File receiptFile = new File(receiptName + ".txt");
+    try {
+        BufferedWriter writer = new BufferedWriter(new PrintWriter(receiptFile));
+        writer.write(this.toString());
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
     }
 }
