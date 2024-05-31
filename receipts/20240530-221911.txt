@@ -1,0 +1,31 @@
+Customer Name: ali
+Customer Email: ali@gmail.com
+
+Receipt:
+-------------------------------------------------------------------------------
+| Item                      | Size       | Price      |
+-------------------------------------------------------------------------------
+| Medium chips:             |            | $1.50      |
+| Small chips:              |            | $1.00      |
+| Medium chips:             |            | $1.50      |
+| Rye sandwich              | 4-inch     | $5.50      |
+|   Base sandwich           |            | $0.00      |
+|   LETTUCE                 |            | $0.00      |
+| Small Pineapple drink:    |            | $2.00      |
+| White sandwich            | 12-inch    | $11.50     |
+|   Base sandwich           |            | $0.00      |
+|   LETTUCE                 |            | $0.00      |
+|   JALAPENOS               |            | $0.00      |
+|   SALAMI                  |            | $3.00      |
+| White sandwich            | 8-inch     | $9.10      |
+|   Base sandwich           |            | $0.00      |
+|   ROAST_BEEF              |            | $1.50      |
+|   PICKLES                 |            | $0.00      |
+|   EXTRA_CHEESE            |            | $0.60      |
+| Wrap toasted sandwich     | 4-inch     | $6.25      |
+|   Base sandwich           |            | $0.00      |
+|   CHEESE                  |            | $0.75      |
+|   STEAK                   |            | $0.00      |
+-------------------------------------------------------------------------------
+| Total Price:              |            | $38.35     |
+-------------------------------------------------------------------------------

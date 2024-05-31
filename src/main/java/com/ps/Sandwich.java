@@ -40,49 +40,15 @@ public class Sandwich extends Product {
         this.toasted = toasted;
     }
 
+    @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        // R1: Append the bread type
-        stringBuilder.append(breadType.toString()).append(" ");
-
-        // R2: Append toasted status
-        if (toasted) {
-            stringBuilder.append("toasted ");
-        }
-
-        // R3: Append sandwich size
-        stringBuilder.append("sandwich ").append(size.toString()).append(": ");
-
-        // R4: Calculate the total price
-        double basePrice = getPrice();
-        double toppingTotal = 0.0;
-        for (SandwichTopping topping : toppings) {
-            Double price = topping.getPrices().get(size);
-            if (price != null) {
-                toppingTotal += price;
-            }
-        }
-        double totalPrice = basePrice + toppingTotal;
-        stringBuilder.append(totalPrice).append("\n");
-
-        // R5: Append the base sandwich price
-        stringBuilder.append("Base sandwich: ").append(basePrice).append("\n");
-
-        // R6: Append each topping and its price
-        for (SandwichTopping topping : toppings) {
-            Double toppingPrice = topping.getPrices().get(size);
-            if (toppingPrice == null) {
-                toppingPrice = 0.0;
-            }
-            stringBuilder.append(" ").append(topping.getName()).append(": ").append(toppingPrice).append("\n");
-        }
-        return stringBuilder.toString();
+        // Return a concise description of the sandwich
+        return breadType.toString() + (toasted ? " toasted" : "") + " sandwich " + size.toString();
     }
 
-    // R7: Calculate the total price
+    // Method to calculate the total price of the sandwich
     public double calculateTotalPrice() {
-        double basePrice = getPrice();
+        double basePrice = getBasePrice();
         double toppingTotal = 0.0;
         for (SandwichTopping topping : toppings) {
             Double price = topping.getPrices().get(size);
@@ -92,4 +58,15 @@ public class Sandwich extends Product {
         }
         return basePrice + toppingTotal;
     }
+
+    // Method to get the base price based on the size of the sandwich
+    double getBasePrice() {
+        switch (size) {
+            case FOUR_INCH: return 5.50;
+            case EIGHT_INCH: return 7.00;
+            case TWELVE_INCH: return 8.50;
+            default: return 0.0;
+        }
+    }
+
 }

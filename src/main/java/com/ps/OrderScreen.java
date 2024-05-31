@@ -495,48 +495,26 @@ public class OrderScreen {
         }
     }
 
-    private void  checkout() {
+    private void checkout() {
         // 1. Gather Order Details
-        StringBuilder orderDetails = new StringBuilder();
-        double totalPrice = 0.0;
-
-        orderDetails.append("Receipt:\n")
-                .append("------------------------------------------------\n");
-
-        for (Product item : order) {
-            orderDetails.append(item.toString()).append("\n");
-            if (item instanceof Sandwich) {
-                totalPrice += ((Sandwich) item).calculateTotalPrice();
-            } else {
-                totalPrice += item.getPrice();
-            }
-        }
-
-        orderDetails.append("------------------------------------------------\n")
-                .append("Total Price: $").append(totalPrice).append("\n");
-
         String receipt = "Customer Name: " + customer.getName() + "\n" +
                 "Customer Email: " + customer.getEmail() + "\n\n" +
-                orderDetails.toString();
+                generateReceiptTable();
 
         System.out.println(receipt);
-
 
         // 3. Ask for Confirmation
         System.out.println("Do you want to confirm the order? (yes/no)");
         String confirmation = scanner.nextLine();
 
         if (confirmation.equalsIgnoreCase("yes")) {
-            // 4. Generate Receipt
-            receipt = orderDetails.toString();
-
             // 5. Save Receipt
             String dateTime = getCurrentDateTime();
             String fileName = "receipts/" + dateTime + ".txt";
             saveToFile(fileName, receipt);
 
             // 6. Print Confirmation
-            System.out.println("\nOrder completed for " + customer.getName() +  "! Your receipt has been saved as " + fileName + ".");
+            System.out.println("\nOrder completed for " + customer.getName() + "! Your receipt has been saved as " + fileName + ".");
 
             // 7. Clear the order list to start fresh
             order.clear();
@@ -544,6 +522,54 @@ public class OrderScreen {
             // Call the cancelOrder method
             cancelOrder();
         }
+    }
+
+    private String generateReceiptTable() {
+        StringBuilder table = new StringBuilder();
+        table.append("Receipt:\n")
+                .append("-------------------------------------------------------------------------------\n")
+                .append(String.format("| %-25s | %-10s | %-10s |\n", "Item", "Size", "Price"))
+                .append("-------------------------------------------------------------------------------\n");
+
+        for (Product item : order) {
+            if (item instanceof Sandwich) {
+                Sandwich sandwich = (Sandwich) item;
+                double basePrice = sandwich.getBasePrice();
+                table.append(String.format("| %-25s | %-10s | $%-9.2f |\n", sandwich.getBreadType() + (sandwich.isToasted() ? " toasted" : "") + " sandwich", sandwich.getSize(), sandwich.calculateTotalPrice()));
+                if (basePrice > 0) {
+                    table.append(String.format("|   %-23s | %-10s | $%-9.2f |\n", "Base sandwich", "", sandwich.getPrice()));
+                }
+                for (SandwichTopping topping : sandwich.getToppings()) {
+                    Double toppingPrice = topping.getPrices().get(sandwich.getSize());
+                    if (toppingPrice == null) {
+                        toppingPrice = 0.0;
+                    }
+                    table.append(String.format("|   %-23s | %-10s | $%-9.2f |\n", topping.getName(), "", toppingPrice));
+                }
+            } else {
+                table.append(String.format("| %-25s | %-10s | $%-9.2f |\n", item.toString(), "", item.getPrice()));
+            }
+        }
+
+        double totalPrice = calculateTotalPrice();
+        table.append("-------------------------------------------------------------------------------\n")
+                .append(String.format("| %-25s | %-10s | $%-9.2f |\n", "Total Price:", "", totalPrice))
+                .append("-------------------------------------------------------------------------------\n");
+        return table.toString();
+    }
+
+
+    // Calculate the total price of the order
+    private double calculateTotalPrice() {
+        double totalPrice = 0.0;
+        for (Product item : order) {
+            if (item instanceof Sandwich) {
+                totalPrice += ((Sandwich) item).calculateTotalPrice();
+            } else {
+                totalPrice += item.getPrice();
+            }
+        }
+        return totalPrice;
     }
 
     // Returns the current date and time as a string in the format yyyyMMdd-HHmmss.
@@ -571,7 +597,6 @@ public class OrderScreen {
             System.out.println("Error: Unable to save the receipt. Please try again.");
         }
     }
-
 
     // Cancels the order and returns to the home screen.
     private void cancelOrder() {

@@ -13,6 +13,6 @@ public class Chips extends Product{
 
     @Override
     public String toString() {
-        return size + " chips: " + getPrice();
+        return size + " chips: ";
     }
 }
