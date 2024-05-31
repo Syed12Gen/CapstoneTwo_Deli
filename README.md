@@ -15,6 +15,13 @@
 
 ## ________________________________________________________
 
+### Purpose
+The DELI-cious project is designed to create a customizable sandwich shop application where users can place orders for sandwiches, drinks, and chips.
+
+### Motivation and Target Audience
+The motivation behind the DELI-cious project is to develop an engaging and interactive application that simulates a real-world ordering system for a sandwich shop
+
+
 ## Application Home Screen
 <img alt="HomeScreen" src="src/Images/HomeScreen.png">
 
