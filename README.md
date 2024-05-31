@@ -108,7 +108,7 @@ After clearing the order, the method prints a message to inform the user that th
 3. #### Returning to Home-Screen:
 The method might also include logic to return the user to the home screen or main menu, depending on how the application is structured. In this example, it calls a hypothetical displayHomeScreen method to handle this transition.
 
-<img alt="Cancel Order" src="src/Images/CancelOrder.png">
+<img width="300" alt="Cancel Order" src="src/Images/CancelOrder.png">
 </details>
 
 ## ________________________________________________________
