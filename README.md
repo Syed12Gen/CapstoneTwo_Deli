@@ -1,5 +1,5 @@
 # DELICIOUS SANDWICHES: A Java CLI Application
-## ____________________________________________
+## ________________________________________________________
 ## Overview
 
 ### Features
@@ -8,7 +8,7 @@
 - **Order Screen** Customer can view their order summary, including the sandwich details, price, and order number.
 - **Custom Sandwich and Premium Sandwich**  Customer can choose to order a custom sandwich or a premium sandwich from the menu.
 
-## ____________________________________________
+## ________________________________________________________
 
 ## Application Home Screen
 <img alt="HomeScreen" src="src/Images/HomeScreen.png">
