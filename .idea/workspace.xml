@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f78f1aa-49f9-4834-8cf7-30877587c7ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/receipts/20240530-210722.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/receipts/20240530-215122.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/ErrorHandling.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/HomeScreen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/OderScreen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Chips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Drink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/HomeScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/OrderScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/OrderScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Sandwich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Sandwich.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/syed12gen/LearnToCode/workshops/CapstoneTwo_Deli/src/main/java",
+    "last_opened_file_path": "/Users/syed12gen/LearnToCode/workshops/CapstoneTwo_Deli/src/Images",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -66,6 +66,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Images" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>

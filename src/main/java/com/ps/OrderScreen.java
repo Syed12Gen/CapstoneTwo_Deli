@@ -103,7 +103,7 @@ public class OrderScreen {
     private Sandwich createSandwich() {
         System.out.println("What kind of sandwich would you like?");
         System.out.println("1. Custom (make it the way you like)");
-        System.out.println("2. Select from pre-made sandwiches");
+        System.out.println("2. Select signature sandwiches");
 
         String choice = scanner.nextLine();
 

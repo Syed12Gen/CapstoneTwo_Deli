@@ -9,9 +9,20 @@ public class HomeScreen {
 
         while (true) {
             // // Display the home screen menu options
-            System.out.println("\nWelcome to the Sandwich Shop!");
+             System.out.println("    (  )   (   )  )");
+             System.out.println("     ) (   )  (  (");
+             System.out.println("     ( )  (    ) )");
+             System.out.println("     _____________");
+             System.out.println("    <_____________> ___");
+             System.out.println("    |             |/ _ \\");
+             System.out.println("    |               | | |");
+             System.out.println("    |               |_| |");
+             System.out.println(" ___|             |\\___/");
+             System.out.println("/    \\___________/    \\");
+             System.out.println("\\_____________________/");
+            System.out.println("\nWelcome to my Deli Shop!");
             System.out.println("1. New Order");
-            System.out.println("0. Exit\n");
+            System.out.println("0. Exit");
             System.out.print("Select an option: ");
             //Reads an integer input
             int choice = scanner.nextInt();
@@ -20,9 +31,10 @@ public class HomeScreen {
 
             if (choice == 1) {
                 // Prompt for customer information
-                System.out.print("\nEnter your name: ");
+                System.out.print("Enter your name: ");
                 String name = scanner.nextLine();
                 System.out.print("Enter your email: ");
+
                 String email = scanner.nextLine();
                 // Create a Customer object
                 Customer customer = new Customer(name, email);
