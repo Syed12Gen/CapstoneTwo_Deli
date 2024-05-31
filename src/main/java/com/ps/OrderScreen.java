@@ -29,7 +29,7 @@ public class OrderScreen {
     private static final SandwichTopping SALAMI = new SandwichTopping(Toppings.SALAMI, createPricesMap(1.00, 2.00, 3.00));
     private static final SandwichTopping HAM = new SandwichTopping(Toppings.HAM, createPricesMap(1.00, 2.00, 3.00));
     private static final SandwichTopping CHICKEN = new SandwichTopping(Toppings.CHICKEN, createPricesMap(1.00, 2.00, 3.00));
-    private static final SandwichTopping STEAK = new SandwichTopping(Toppings.STEAK, createPricesMap(0.00, 0.00, 0.00));
+    private static final SandwichTopping STEAK = new SandwichTopping(Toppings.STEAK, createPricesMap(2.00, 4.00, 6.00));
     private static final SandwichTopping ROAST_BEEF = new SandwichTopping(Toppings.ROAST_BEEF, createPricesMap(0.75, 1.50, 2.25));
     private static final SandwichTopping PEPPERS = new SandwichTopping(Toppings.PEPPERS, createPricesMap(0.00, 0.00, 0.00));
     private static final SandwichTopping CUCUMBERS = new SandwichTopping(Toppings.CUCUMBERS, createPricesMap(0.00, 0.00, 0.00));

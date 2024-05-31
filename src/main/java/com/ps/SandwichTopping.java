@@ -1,27 +1,17 @@
 package com.ps;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class SandwichTopping {
-    private String name;
-    private Toppings topping;
+    private Toppings name;
     private Map<SandwichSize, Double> prices;
 
-    // Constructor
-    public SandwichTopping(Toppings topping, Map<SandwichSize, Double> prices) {
-        this.name = topping.name();
-        this.topping = topping;
+    public SandwichTopping(Toppings name, Map<SandwichSize, Double> prices) {
+        this.name = name;
         this.prices = prices;
-
     }
 
-    public Toppings getTopping() {
-        return topping;
-    }
-
-    public String getName() {
+    public Toppings getName() {
         return name;
     }
 
