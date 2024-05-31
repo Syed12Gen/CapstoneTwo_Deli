@@ -9,6 +9,11 @@
 - **Custom Sandwich and Premium Sandwich**  Customer can choose to order a custom sandwich or a premium sandwich from the menu.
 
 ## ________________________________________________________
+## UML Class Diagram
+
+<img  alt="UML" src="src/Images/Deli_UML_SAH.png">
+
+## ________________________________________________________
 
 ## Application Home Screen
 <img alt="HomeScreen" src="src/Images/HomeScreen.png">
