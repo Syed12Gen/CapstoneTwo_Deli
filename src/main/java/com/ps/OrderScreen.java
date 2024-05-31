@@ -512,14 +512,15 @@ public class OrderScreen {
             }
         }
 
-
         orderDetails.append("------------------------------------------------\n")
                 .append("Total Price: $").append(totalPrice).append("\n");
 
-        String receipt = orderDetails.toString();
+        String receipt = "Customer Name: " + customer.getName() + "\n" +
+                "Customer Email: " + customer.getEmail() + "\n\n" +
+                orderDetails.toString();
 
-        // 2. Display Order Details
-        System.out.println(orderDetails.toString());
+        System.out.println(receipt);
+
 
         // 3. Ask for Confirmation
         System.out.println("Do you want to confirm the order? (yes/no)");
@@ -527,9 +528,7 @@ public class OrderScreen {
 
         if (confirmation.equalsIgnoreCase("yes")) {
             // 4. Generate Receipt
-            receipt = "Customer Name: " + customer.getName() + "\n" +
-                    "Customer Email: " + customer.getEmail() + "\n\n" +
-                    receipt;
+            receipt = orderDetails.toString();
 
             // 5. Save Receipt
             String dateTime = getCurrentDateTime();
@@ -537,7 +536,7 @@ public class OrderScreen {
             saveToFile(fileName, receipt);
 
             // 6. Print Confirmation
-            System.out.println("Order completed! Your receipt has been saved as " + fileName + ".");
+            System.out.println("\nOrder completed for " + customer.getName() +  "! Your receipt has been saved as " + fileName + ".");
 
             // 7. Clear the order list to start fresh
             order.clear();
@@ -545,9 +544,6 @@ public class OrderScreen {
             // Call the cancelOrder method
             cancelOrder();
         }
-
-        // Return to the home screen
-        HomeScreen.main(new String[0]);
     }
 
     // Returns the current date and time as a string in the format yyyyMMdd-HHmmss.

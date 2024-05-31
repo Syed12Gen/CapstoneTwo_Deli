@@ -9,7 +9,7 @@ public class HomeScreen {
 
         while (true) {
             // // Display the home screen menu options
-            System.out.println("Welcome to the Sandwich Shop!");
+            System.out.println("\nWelcome to the Sandwich Shop!");
             System.out.println("1. New Order");
             System.out.println("0. Exit\n");
             System.out.print("Select an option: ");
@@ -34,7 +34,8 @@ public class HomeScreen {
             } else if (choice == 0) {
                 System.out.println("Thank you for visiting! Goodbye!");
                 break; // Exit the loop and end the program
-            } else {
+            }
+            else {
                 System.out.println("Invalid option. Please try again.");
             }
         }

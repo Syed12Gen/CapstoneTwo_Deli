@@ -1,0 +1,17 @@
+Customer Name: Kira
+Customer Email: kira@gmail.com
+
+Customer Name: Kira
+Customer Email: kira@gmail.com
+
+Receipt:
+------------------------------------------------
+Small Pineapple drink: 2.0
+White toasted sandwich 4-inch: 2.0
+Base sandwich: 0.0
+ BACON: 1.0
+ PEPPERS: 0.0
+ CHICKEN: 1.0
+
+------------------------------------------------
+Total Price: $4.0
